@@ -135,4 +135,16 @@ class UsersController extends AppController
         }
     }
 
+     /**
+     * Logout method
+     *
+     * @return \Cake\Http\Response|null Redirects on successful logout, renders view otherwise.
+     */
+
+     public function logout()
+     {
+        $this->redirect($this->Auth->logout());
+        $this->Flash->success("Thanks for visiting");
+     }
+
 }
