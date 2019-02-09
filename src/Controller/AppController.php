@@ -51,5 +51,23 @@ class AppController extends Controller
          * see https://book.cakephp.org/3.0/en/controllers/components/security.html
          */
         //$this->loadComponent('Security');
+
+        $this->loadComponent('Auth',[
+            'authenticate' => [
+                'Form' => [
+                    'fields' => [
+                        'username' => 'email',
+                        'password' => 'password'
+                    ]
+                ]
+            ],
+
+            'loginAction'=>[
+                'controller' => 'users',
+                'action' => 'login'
+            ],
+
+            'storage' => 'Session'
+        ]);
     }
 }

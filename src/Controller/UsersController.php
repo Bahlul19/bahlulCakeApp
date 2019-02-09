@@ -112,4 +112,27 @@ class UsersController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+
+    /**
+     * Login method
+     *
+     * @return \Cake\Http\Response|null Redirects on successful login, renders view otherwise.
+     */
+
+    public function login()
+    {
+        $user = $this->Auth->identify();
+        if($user)
+        {
+            $this->Auth->setUser($user);
+            $this->Flash->success("Login successful");
+            return $this->redirect(['controller' => 'Users', 'action' => 'index']);
+        }
+        else
+        {
+            $this->Flash->error("Username and Password not match");
+        }
+    }
+
 }
